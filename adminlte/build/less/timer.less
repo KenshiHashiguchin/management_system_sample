@@ -1,0 +1,26 @@
+// CSS
+@timer-size: 24px;
+@timer-lg-size: 42px;
+
+.timer-base(@size) {
+  display: inline-block;
+  .jst-hours,
+  .jst-minutes,
+  .jst-seconds {
+    //  float: left;
+    display: inline-block;
+    font-size: @size;
+  }
+  .jst-timeout {
+    color: red;
+    font-size: @size;
+  }
+}
+
+.timer {
+  .timer-base(@timer-size);
+}
+
+.timer-large {
+  .timer-base(@timer-lg-size);
+}

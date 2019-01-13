@@ -1,0 +1,27 @@
+/*
+ * Page: Markdown
+ * -------------
+ */
+
+.markdown {
+  ul > li {
+    position: relative;
+    &:before {
+      position: absolute;
+      content: "";
+      border-style: solid;
+      border-width: 0 0.15em 0.15em 0;
+      border-color: lighten(black,20%);
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+      margin-top: -1em;
+      top: 1.1em;
+      height: 1em;
+      width: 0.5em;
+      left: 0.4em;
+    }
+  }
+}
