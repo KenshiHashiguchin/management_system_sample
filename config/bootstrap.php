@@ -201,4 +201,4 @@ Type::build('timestamp')
 //Inflector::rules('uninflected', ['dontinflectme']);
 //Inflector::rules('transliteration', ['/å/' => 'aa']);
 
-Plugin::load('BootstrapUI');
+//Plugin::load('BootstrapUI');
