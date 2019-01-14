@@ -16,6 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Core\Configure;
 
 /**
  * Application Controller
@@ -52,4 +53,19 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
     }
+
+    public function beforeFilter(Event $event)
+	{
+		parent::beforeFilter($event);
+
+		$imgUrl = Configure::read('App.imageBaseUrl');
+		$this->set('imgUrl', $imgUrl);
+		$this->set('imgFlagUrl', $imgUrl . 'flags/');
+		$this->set('jsUrl', Configure::read('App.jsBaseUrl'));
+		$this->set('cssUrl', Configure::read('App.cssBaseUrl'));
+		$this->set('pluginUrl', Configure::read('App.pluginBaseUrl'));
+		$this->set('prefix', $this->request->getParam('prefix'));
+		$this->set('min', '');
+		$this->set('adminlte', 'adminlte/');
+	}
 }
