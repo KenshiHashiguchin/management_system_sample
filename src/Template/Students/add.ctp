@@ -15,16 +15,23 @@
 	<?= $this->Form->create($student) ?>
     <fieldset>
 		<?php
-		echo $this->Form->control('last_name');
-		echo $this->Form->control('first_name');
+		echo $this->Form->control('last_name',[
+			'label' => '苗字'
+		]);
+		echo $this->Form->control('first_name',[
+			'label' => '名前'
+		]);
 		echo $this->Form->control('grade', [
+		    'label' => '学年',
 			'options' => [1, 2, 3],
 			'type'    => 'select',
 		]);
-		echo $this->Form->control('school');
+		echo $this->Form->control('school',[
+			'label' => '学校名'
+		]);
 		?>
     </fieldset>
-	<?= $this->Form->button(__('Submit')) ?>
+	<?= $this->Form->button(__('登録')) ?>
 	<?= $this->Form->end() ?>
     </div>
 </div>
