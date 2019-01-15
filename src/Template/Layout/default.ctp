@@ -26,15 +26,15 @@
     <!-- for responsive -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- bootstrap -->
-    <link href="adminlte/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/adminlte/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <!-- font awesome -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"
           type="text/css"/>
     <!-- ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
     <!-- adminLTE style -->
-    <link href="dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css"/>
-    <link href="dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
 	<?= $this->fetch('meta') ?>
 	<?= $this->fetch('css') ?>
 	<?= $this->fetch('script') ?>
@@ -107,11 +107,11 @@
 <!-- JS -->
 
 <!-- jquery -->
-<script src="adminlte/plugins/jQuery/jQuery-2.2.3.min.js" type="text/javascript"></script>
+<script src="/adminlte/plugins/jQuery/jQuery-2.2.3.min.js" type="text/javascript"></script>
 <!-- bootstrap -->
-<script src="adminlte/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/adminlte/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- adminLTE -->
-<script src="adminlte/dist/js/app.min.js" type="text/javascript"></script>
+<script src="/adminlte/dist/js/app.min.js" type="text/javascript"></script>
 
 <?= $this->fetch('scriptBottom') ?>
 
