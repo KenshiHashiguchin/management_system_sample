@@ -15,6 +15,7 @@
 
 //$cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
+
 <!DOCTYPE html>
 <html>
 <head class="main-header">
@@ -57,9 +58,7 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
-                    <a href="#" >
-                        ログアウト
-                    </a>
+                        <?=$this->Html->link('ログアウト', ['controller' => 'Users', 'action' => 'logout'])?>
                     </li>
                 </ul>
             </div>
@@ -117,6 +116,5 @@
 
 <?= $this->fetch('scriptBottom2') ?>
 
-<script><?= $this->Flash->render() ?></script>
 </body>
 </html>
