@@ -14,6 +14,7 @@
 namespace App\View;
 
 use Cake\View\View;
+use Cake\Routing\Router;
 
 /**
  * Application View
@@ -41,4 +42,14 @@ class AppView extends View
 		$this->loadHelper('Flash', ['className' => 'BootstrapUI.Flash']);
 		$this->loadHelper('Paginator', ['className' => 'BootstrapUI.Paginator']);
     }
+
+	public function url($controller, $action, $member = null, $id = null)
+	{
+		$options = ['controller' => $controller, 'action' => $action];
+		if ($member) {
+			$options['prefix'] = $member;
+		}
+		return Router::url(['_scheme' => env('SCHEME'), 'prefix' => $member,
+							'controller' => $controller, 'action' => $action, 'id' => $id]);
+	}
 }

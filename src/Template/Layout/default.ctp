@@ -71,16 +71,25 @@
         <section class="sidebar">
             <ul class="sidebar-menu">
 				<?= $this->element('MenuItemTree', [
-					'name' => 'Event',
-					'icon' => 'fa-calendar',
-					'color' => 'text-green',
+					'name' => '生徒',
+					'icon' => 'fa-pencil',
 					'children' => [
-						['name' => __('Event'), 'controller' => 'Events', 'action' => 'index', 'icon' => null],
-						['name' => __('Participate event'), 'controller' => 'Events', 'action' => 'mine', 'icon' => null],
-						['name' => __('Recently accessed'), 'controller' => 'Events', 'action' => 'enter', 'icon' => null],
-						['name' => __('Forum list'), 'controller' => 'EventThreads', 'action' => 'index', 'icon' => null],
+						['name' => '生徒一覧', 'controller' => 'Students', 'action' => 'index', 'icon' => null],
+						['name' => '授業日程', 'controller' => 'Students', 'action' => 'mine', 'icon' => null , 'disabled' => true],
+						['name' => '入金管理', 'controller' => 'Students', 'action' => 'mine', 'icon' => null , 'disabled' => true],
 					],
 				]) ?>
+				<?= $this->element('MenuItemTree', [
+					'name' => '講師',
+					'icon' => 'fa-users',
+					'children' => [
+						['name' => '講師一覧', 'controller' => 'Teachers', 'action' => 'index', 'icon' => null],
+						['name' => '授業設定', 'controller' => 'Teachers', 'action' => 'index', 'icon' => null, 'disabled' => true],
+					],
+				]) ?>
+				<?= $this->element('MenuItem', ['controller' => 'Users', 'action' => 'index',
+												'icon' => 'fa-user', 'name' => '管理アカウント']) ?>
+
             </ul>
         </section>
     </aside><!-- end sidebar -->
