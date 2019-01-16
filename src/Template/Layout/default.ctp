@@ -15,6 +15,7 @@
 
 //$cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
+
 <!DOCTYPE html>
 <html>
 <head class="main-header">
@@ -26,15 +27,15 @@
     <!-- for responsive -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- bootstrap -->
-    <link href="/adminlte/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <!-- font awesome -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"
           type="text/css"/>
     <!-- ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
     <!-- adminLTE style -->
-    <link href="/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css"/>
-    <link href="/dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/adminlte/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/adminlte/dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
 	<?= $this->fetch('meta') ?>
 	<?= $this->fetch('css') ?>
 	<?= $this->fetch('script') ?>
@@ -57,9 +58,7 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
-                    <a href="#" >
-                        ログアウト
-                    </a>
+						<?=$this->Html->link('ログアウト', ['controller' => 'Users', 'action' => 'logout'])?>
                     </li>
                 </ul>
             </div>
@@ -72,16 +71,25 @@
         <section class="sidebar">
             <ul class="sidebar-menu">
 				<?= $this->element('MenuItemTree', [
-					'name' => 'Event',
-					'icon' => 'fa-calendar',
-					'color' => 'text-green',
+					'name' => '生徒',
+					'icon' => 'fa-pencil',
 					'children' => [
-						['name' => __('Event'), 'controller' => 'Events', 'action' => 'index', 'icon' => null],
-						['name' => __('Participate event'), 'controller' => 'Events', 'action' => 'mine', 'icon' => null],
-						['name' => __('Recently accessed'), 'controller' => 'Events', 'action' => 'enter', 'icon' => null],
-						['name' => __('Forum list'), 'controller' => 'EventThreads', 'action' => 'index', 'icon' => null],
+						['name' => '生徒一覧', 'controller' => 'Students', 'action' => 'index', 'icon' => null],
+						['name' => '授業日程', 'controller' => 'Students', 'action' => 'mine', 'icon' => null , 'disabled' => true],
+						['name' => '入金管理', 'controller' => 'Students', 'action' => 'mine', 'icon' => null , 'disabled' => true],
 					],
 				]) ?>
+				<?= $this->element('MenuItemTree', [
+					'name' => '講師',
+					'icon' => 'fa-users',
+					'children' => [
+						['name' => '講師一覧', 'controller' => 'Teachers', 'action' => 'index', 'icon' => null],
+						['name' => '授業設定', 'controller' => 'Teachers', 'action' => 'index', 'icon' => null, 'disabled' => true],
+					],
+				]) ?>
+				<?= $this->element('MenuItem', ['controller' => 'Users', 'action' => 'index',
+												'icon' => 'fa-user', 'name' => '管理アカウント']) ?>
+
             </ul>
         </section>
     </aside><!-- end sidebar -->
@@ -107,9 +115,13 @@
 <!-- JS -->
 
 <!-- jquery -->
-<script src="/adminlte/plugins/jQuery/jQuery-2.2.3.min.js" type="text/javascript"></script>
+<!--<script src="/adminlte/plugins/jQuery/jQuery-2.2.3.min.js" type="text/javascript"></script>-->
+<script
+        src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+        crossorigin="anonymous"></script>
 <!-- bootstrap -->
-<script src="/adminlte/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- adminLTE -->
 <script src="/adminlte/dist/js/app.min.js" type="text/javascript"></script>
 
@@ -117,6 +129,5 @@
 
 <?= $this->fetch('scriptBottom2') ?>
 
-<script><?= $this->Flash->render() ?></script>
 </body>
 </html>
