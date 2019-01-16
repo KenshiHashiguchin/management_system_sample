@@ -58,7 +58,7 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
-						<?=$this->Html->link('ログアウト', ['controller' => 'Users', 'action' => 'logout'])?>
+                        <?=$this->Html->link('ログアウト', ['controller' => 'Users', 'action' => 'logout'])?>
                     </li>
                 </ul>
             </div>

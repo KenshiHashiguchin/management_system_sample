@@ -17,6 +17,7 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\Core\Configure;
+use Cake\Http\Middleware\CsrfProtectionMiddleware;
 
 /**
  * Application Controller
@@ -51,7 +52,19 @@ class AppController extends Controller
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
-        //$this->loadComponent('Security');
+        $this->loadComponent('Security');
+//		$this->loadComponent('Csrf');
+
+		$this->loadComponent('Auth', [
+			'loginRedirect' => [
+				'controller' => 'Users',
+				'action' => 'index'
+			],
+			'logoutRedirect' => [
+				'controller' => 'Users',
+				'action' => 'login',
+			]
+		]);
     }
 
     public function beforeFilter(Event $event)
@@ -67,5 +80,10 @@ class AppController extends Controller
 		$this->set('prefix', $this->request->getParam('prefix'));
 		$this->set('min', '');
 		$this->set('adminlte', 'adminlte/');
+	}
+
+	public function isAuthorized($user)
+	{
+		return true;
 	}
 }
