@@ -3,28 +3,39 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Teacher $teacher
  */
+use Cake\ORM\TableRegistry;
+$options = TableRegistry::get('Subjects')->makeSelectOption();
+$this->log($options,'info');
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $teacher->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $teacher->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Teachers'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="teachers form large-9 medium-8 columns content">
+<div class="box box-solid">
+    <div class="box-header">
+        <span class="box-title">講師編集</span>
+    </div>
+    <div class="box-body">
     <?= $this->Form->create($teacher) ?>
     <fieldset>
-        <legend><?= __('Edit Teacher') ?></legend>
         <?php
-            echo $this->Form->control('last_name');
-            echo $this->Form->control('first_name');
+            echo $this->Form->control('last_name',[
+                    'label' => '苗字'
+            ]);
+            echo $this->Form->control('first_name',[
+                    'label' => '名前'
+            ]);
         ?>
+		<?= $this->Form->control('subjects._ids', [
+			'label'       => '担当できる教科',
+			'type'        => 'select',
+			'multiple'    => 'checkbox',
+			'hiddenField' => false,
+			'templates'   => $this->Template->checkboxRow(5),
+			'options'     => TableRegistry::get('Subjects')->makeSelectOption()
+		]) ?>
+
+
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Submit'),[
+            'class' => 'btn btn-primary'
+    ]) ?>
     <?= $this->Form->end() ?>
+    </div>
 </div>

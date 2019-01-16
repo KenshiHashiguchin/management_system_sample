@@ -4,6 +4,7 @@ namespace App\Model\Table;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
 
 /**
@@ -62,4 +63,21 @@ class SubjectsTable extends Table
 
         return $validator;
     }
+
+	/*
+	 * $containNotSpecified: trueに設定すると、「指定しない」という項目を追加します。
+	 * $tag: テーブル側でtaggedConditionが指定されている場合、そのキーを渡すと特別な条件を利用できます。
+	 */
+	public function makeSelectOption()
+	{
+		$Subjects = TableRegistry::get('Subjects');
+		//build query
+		$entities = $Subjects->find();
+		//make options
+		$options = [];
+		foreach ($entities as $entity) {
+				$options    += [$entity->id=> $entity->subject_name];
+		}
+		return $options;
+	}
 }

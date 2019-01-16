@@ -18,6 +18,7 @@
                 <tr>
                     <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                     <th scope="col"><?= $this->Paginator->sort('last_name', '名前') ?></th>
+                    <th scope="col">担当教科</th>
                     <th scope="col" class="text-center"><?= __('Actions') ?></th>
                 </tr>
                 </thead>
@@ -26,6 +27,11 @@
                     <tr>
                         <td><?= $this->Number->format($teacher->id) ?></td>
                         <td><?= h($teacher->last_name.' '.$teacher->first_name) ?></td>
+                        <td>
+                            <?php foreach ($teacher->subjects as $subject): ?>
+                            <?=$subject->subject_name?>
+                        <?php endforeach; ?>
+                        </td>
                         <td class="text-center">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

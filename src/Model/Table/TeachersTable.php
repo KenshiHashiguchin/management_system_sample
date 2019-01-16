@@ -34,6 +34,15 @@ class TeachersTable extends Table
         $this->setTable('teachers');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+		$this->belongsToMany('Subjects', [
+			'joinTable' => 'TeacherSubjects',
+		]);
+
+		$this->hasMany('TeacherSubjects',[
+			'foreignKey' => 'teacher_id',
+		]);
+
     }
 
     /**
