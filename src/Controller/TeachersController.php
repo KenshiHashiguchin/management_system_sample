@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Teachers Controller
@@ -20,7 +21,13 @@ class TeachersController extends AppController
      */
     public function index()
     {
-        $teachers = $this->paginate($this->Teachers);
+    	$teachers = $this->Teachers->find()
+			->contain(['Subjects' => function ($q) {
+			return $q->order([
+				'Subjects.id' => 'ASC'
+			]);
+		},]);
+        $teachers = $this->paginate($teachers);
 
         $this->set(compact('teachers'));
     }
@@ -71,14 +78,18 @@ class TeachersController extends AppController
     public function edit($id = null)
     {
         $teacher = $this->Teachers->get($id, [
-            'contain' => []
+            'contain' => ['Subjects']
         ]);
+
+
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $teacher = $this->Teachers->patchEntity($teacher, $this->request->getData());
+			$teacher->accessible('subjects', true);
+        	$data = $this->request->getData();
+            $teacher = $this->Teachers->patchEntity($teacher, $data);
             if ($this->Teachers->save($teacher)) {
                 $this->Flash->success(__('The teacher has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'edit', $teacher->id]);
             }
             $this->Flash->error(__('The teacher could not be saved. Please, try again.'));
         }

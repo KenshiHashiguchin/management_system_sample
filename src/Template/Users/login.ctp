@@ -13,16 +13,16 @@ use Cake\View\Helper\FormHelper;
 	</title>
 	<!-- for responsive -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<!-- bootstrap -->
-	<link href="/adminlte/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-	<!-- font awesome -->
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"
-		  type="text/css"/>
-	<!-- ionicons -->
-	<link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
-	<!-- adminLTE style -->
-	<link href="/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css"/>
-	<link href="/dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
+    <!-- bootstrap -->
+    <link href="/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <!-- font awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css"/>
+    <!-- ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
+    <!-- adminLTE style -->
+    <link href="/adminlte/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/adminlte/dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
 	<?= $this->fetch('meta') ?>
 	<?= $this->fetch('css') ?>
 	<?= $this->fetch('script') ?>
@@ -35,14 +35,13 @@ use Cake\View\Helper\FormHelper;
 <div class="login-box">
 
 	<div class="login-logo">
-		<a href="">管理画面</a>
+		<a href="">ログイン</a>
 	</div><!-- /.login-logo -->
 
 	<div class="login-box-body">
         <div class="users form">
 			<?= $this->Form->create() ?>
             <fieldset>
-                <legend><?= __('Please enter your username and password') ?></legend>
 				<?= $this->Form->control('username') ?>
 				<?= $this->Form->control('password') ?>
             </fieldset>
@@ -52,9 +51,13 @@ use Cake\View\Helper\FormHelper;
 	</div><!-- /.login-box-body -->
 </div><!-- /.login-box -->
 <!-- jquery -->
-<script src="/adminlte/plugins/jQuery/jQuery-2.2.3.min.js" type="text/javascript"></script>
+<!--<script src="/adminlte/plugins/jQuery/jQuery-2.2.3.min.js" type="text/javascript"></script>-->
+<script
+        src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+        crossorigin="anonymous"></script>
 <!-- bootstrap -->
-<script src="/adminlte/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- adminLTE -->
 <script src="/adminlte/dist/js/app.min.js" type="text/javascript"></script>
 
