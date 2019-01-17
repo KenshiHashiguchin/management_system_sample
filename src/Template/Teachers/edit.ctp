@@ -5,7 +5,6 @@
  */
 use Cake\ORM\TableRegistry;
 $options = TableRegistry::get('Subjects')->makeSelectOption();
-$this->log($options,'info');
 ?>
 <div class="box box-solid">
     <div class="box-header">

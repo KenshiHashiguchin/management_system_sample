@@ -7,21 +7,21 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * TeacherSubjects Model
+ * TeachersSubjects Model
  *
  * @property \App\Model\Table\TeachersTable|\Cake\ORM\Association\BelongsTo $Teachers
  * @property \App\Model\Table\SubjectsTable|\Cake\ORM\Association\BelongsTo $Subjects
  *
- * @method \App\Model\Entity\TeacherSubject get($primaryKey, $options = [])
- * @method \App\Model\Entity\TeacherSubject newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\TeacherSubject[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\TeacherSubject|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\TeacherSubject|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\TeacherSubject patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\TeacherSubject[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\TeacherSubject findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\TeachersSubject get($primaryKey, $options = [])
+ * @method \App\Model\Entity\TeachersSubject newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\TeachersSubject[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\TeachersSubject|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\TeachersSubject|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\TeachersSubject patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\TeachersSubject[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\TeachersSubject findOrCreate($search, callable $callback = null, $options = [])
  */
-class TeacherSubjectsTable extends Table
+class TeachersSubjectsTable extends Table
 {
 
     /**
@@ -34,7 +34,7 @@ class TeacherSubjectsTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('teacher_subjects');
+        $this->setTable('teachers_subjects');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
@@ -59,12 +59,6 @@ class TeacherSubjectsTable extends Table
         $validator
             ->integer('id')
             ->allowEmptyString('id', 'create');
-		$validator
-			->integer('teacher_id')
-			->allowEmptyString('teacher_id', 'create');
-		$validator
-			->integer('subject_id')
-			->allowEmptyString('subject_id', 'create');
 
         return $validator;
     }

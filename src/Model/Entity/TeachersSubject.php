@@ -4,7 +4,7 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * TeacherSubject Entity
+ * TeachersSubject Entity
  *
  * @property int $id
  * @property int $teacher_id
@@ -13,7 +13,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Teacher $teacher
  * @property \App\Model\Entity\Subject $subject
  */
-class TeacherSubject extends Entity
+class TeachersSubject extends Entity
 {
 
     /**

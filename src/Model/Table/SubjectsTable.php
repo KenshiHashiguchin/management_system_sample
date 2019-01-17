@@ -38,7 +38,7 @@ class SubjectsTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->hasMany('TeacherSubjects', [
+        $this->hasMany('TeachersSubjects', [
             'foreignKey' => 'subject_id'
         ]);
     }

@@ -36,10 +36,10 @@ class TeachersTable extends Table
         $this->setPrimaryKey('id');
 
 		$this->belongsToMany('Subjects', [
-			'joinTable' => 'TeacherSubjects',
+			'joinTable' => 'TeachersSubjects',
 		]);
 
-		$this->hasMany('TeacherSubjects',[
+		$this->hasMany('TeachersSubjects',[
 			'foreignKey' => 'teacher_id',
 		]);
 
@@ -68,17 +68,6 @@ class TeachersTable extends Table
             ->maxLength('first_name', 31)
             ->requirePresence('first_name', 'create')
             ->allowEmptyString('first_name', false);
-
-        $validator
-            ->dateTime('birthday')
-            ->requirePresence('birthday', 'create')
-            ->allowEmptyDateTime('birthday', false);
-
-        $validator
-            ->scalar('school')
-            ->maxLength('school', 31)
-            ->requirePresence('school', 'create')
-            ->allowEmptyString('school', false);
 
         return $validator;
     }
