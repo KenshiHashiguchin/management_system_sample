@@ -27,7 +27,6 @@ class Teacher extends Entity
     protected $_accessible = [
         'last_name' => true,
         'first_name' => true,
-        'birthday' => true,
-        'school' => true
+		'subjects' => true
     ];
 }

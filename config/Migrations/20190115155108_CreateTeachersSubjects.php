@@ -1,7 +1,7 @@
 <?php
 use Migrations\AbstractMigration;
 
-class CreateTeacherSubjects extends AbstractMigration
+class CreateTeachersSubjects extends AbstractMigration
 {
     /**
      * Change Method.
@@ -12,7 +12,7 @@ class CreateTeacherSubjects extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('teacher_subjects');
+        $table = $this->table('teachers_subjects');
         $table->addColumn('teacher_id','integer',[
         	'null' => false
 		]);
