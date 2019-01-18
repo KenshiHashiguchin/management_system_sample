@@ -20,12 +20,13 @@ use Cake\ORM\TableRegistry;
 				'label'    => '担当教科',
 				'type'     => 'select',
 				'multiple' => 'checkbox',
+				'required' => false,
 				'templates'   => $this->Template->checkboxRow(5),
 				'options'  => TableRegistry::get('Subjects')->getSubjectOption(),
 			]); ?>
     </fieldset>
         <br>
-	<?= $this->Form->submit(__('Search')) ?>
+	<?= $this->Form->submit(__('Search'),['class' => 'btn btn-primary']) ?>
 	<?= $this->Form->end() ?>
     </div>
 </div>
