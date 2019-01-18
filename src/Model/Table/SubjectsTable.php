@@ -64,11 +64,7 @@ class SubjectsTable extends Table
         return $validator;
     }
 
-	/*
-	 * $containNotSpecified: trueに設定すると、「指定しない」という項目を追加します。
-	 * $tag: テーブル側でtaggedConditionが指定されている場合、そのキーを渡すと特別な条件を利用できます。
-	 */
-	public function makeSelectOption()
+	public function getSubjectOption()
 	{
 		$Subjects = TableRegistry::get('Subjects');
 		//build query

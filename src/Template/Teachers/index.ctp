@@ -3,7 +3,35 @@
  * @var \App\View\AppView                                                $this
  * @var \App\Model\Entity\Teacher[]|\Cake\Collection\CollectionInterface $teachers
  */
+//use App\Form\EventQuestionSearchForm;
+use Cake\ORM\TableRegistry;
 ?>
+
+<div class="box box-solid">
+    <div class="box-body">
+	<?= $this->Form->create($teacherSearchForm) ?>
+    <fieldset>
+			<?= $this->Form->control('keyword',[
+				'placeHolder' => __('input keyword'),
+				'value'       => $searchForm['keyword'] ?? '',
+				'label'       => __('Keyword'),
+			])?>
+			<?= $this->Form->control('subjects._ids', [
+				'label'    => '担当教科',
+				'type'     => 'select',
+				'multiple' => 'checkbox',
+				'templates'   => $this->Template->checkboxRow(5),
+				'options'  => TableRegistry::get('Subjects')->getSubjectOption(),
+			]); ?>
+    </fieldset>
+        <br>
+	<?= $this->Form->submit(__('Search')) ?>
+	<?= $this->Form->end() ?>
+    </div>
+</div>
+<p><?=$this->log($teacherSearchForm,'info') ?></p>
+
+
 <div class="box box-solid">
     <div class="box-header">
         <span class="box-title">
