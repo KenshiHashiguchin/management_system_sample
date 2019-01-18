@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Teacher $teacher
  */
 use Cake\ORM\TableRegistry;
-$options = TableRegistry::get('Subjects')->makeSelectOption();
+$options = TableRegistry::get('Subjects')->getSubjectOption();
 ?>
 <div class="box box-solid">
     <div class="box-header">
@@ -22,15 +22,12 @@ $options = TableRegistry::get('Subjects')->makeSelectOption();
             ]);
         ?>
 		<?= $this->Form->control('subjects._ids', [
-			'label'       => '担当できる教科',
+			'label'       => '担当教科',
 			'type'        => 'select',
 			'multiple'    => 'checkbox',
-			'hiddenField' => false,
 			'templates'   => $this->Template->checkboxRow(5),
-			'options'     => TableRegistry::get('Subjects')->makeSelectOption()
+			'options'     => TableRegistry::get('Subjects')->getSubjectOption()
 		]) ?>
-
-
     </fieldset>
     <?= $this->Form->button(__('Submit'),[
             'class' => 'btn btn-primary'

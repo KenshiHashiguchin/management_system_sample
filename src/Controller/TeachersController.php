@@ -3,6 +3,8 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
+use App\Form\TeacherSearchForm;
+use Cake\Core\Configure;
 
 /**
  * Teachers Controller
@@ -21,15 +23,22 @@ class TeachersController extends AppController
      */
     public function index()
     {
-    	$teachers = $this->Teachers->find()
-			->contain(['Subjects' => function ($q) {
-			return $q->order([
-				'Subjects.id' => 'ASC'
-			]);
-		},]);
+//		$sessionKies = ['search_form'  => 'Teacher.search_form'];
+//		$session     = $this->request->session();
+
+		if($this->request->is('post')) {
+			$searchForm  = $this->request->getData();
+		}
+//		$searchForm  = $session->read($sessionKies['search_form']) ?? [];
+		$searchForm  = $searchForm ?? [];
+
+		$teacherSearchForm = new TeacherSearchForm();
+
+		$teachers = $teacherSearchForm->execute($searchForm);
+
         $teachers = $this->paginate($teachers);
 
-        $this->set(compact('teachers'));
+        $this->set(compact('teachers', 'searchForm', 'teacherSearchForm'));
     }
 
     /**
@@ -89,7 +98,7 @@ class TeachersController extends AppController
             if ($this->Teachers->save($teacher)) {
                 $this->Flash->success(__('The teacher has been saved.'));
 
-                return $this->redirect(['action' => 'edit', $teacher->id]);
+                return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The teacher could not be saved. Please, try again.'));
         }
