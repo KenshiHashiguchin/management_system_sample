@@ -30,9 +30,6 @@ use Cake\ORM\TableRegistry;
 	<?= $this->Form->end() ?>
     </div>
 </div>
-<p><?=$this->log($teacherSearchForm,'info') ?></p>
-
-
 <div class="box box-solid">
     <div class="box-header">
         <span class="box-title">
