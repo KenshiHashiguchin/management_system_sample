@@ -23,8 +23,8 @@
 		]);
 		echo $this->Form->control('grade', [
 		    'label' => '学年',
-			'options' => [1, 2, 3],
 			'type'    => 'select',
+			'options' => [1 => 1, 2 => 2, 3 => 3],
 		]);
 		echo $this->Form->control('school',[
 			'label' => '学校名'
